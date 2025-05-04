@@ -1,0 +1,23 @@
+[
+    {
+        "make":"Honda",
+        "userId":1
+    },
+    {
+        "make":"nissan",
+        "userId":1
+    },
+    {
+        "make":"ford",
+        "userId":1
+    },
+    {
+        "make":"bmw",
+        "userId":2
+    },
+    {
+        "make":"mercy",
+        "userId":2
+    }
+
+]
