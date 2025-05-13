@@ -11,7 +11,8 @@ function App() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitted, isSubmitting ,submitCount,isSubmitSuccessful},
+    reset,getValues,setValue,trigger,
+    formState: { errors, isSubmitted, isSubmitting ,submitCount,isSubmitSuccessful,dirtyFields,touchedFields,isReady,isLoading},
   } = useForm({
     resolver: yupResolver(scema),
     mode: "onChange",
@@ -21,12 +22,26 @@ function App() {
   console.log("submitting" + isSubmitting);
    console.log("count" + submitCount);
       console.log("cosucesunt" + isSubmitSuccessful);
+      console.log("dirtyfild" + dirtyFields.fname);
+      console.log("touch" + touchedFields.lname);
+      console.log("dirtyfild" + dirtyFields);
+      console.log("read" + isReady);
+      console.log("load" + isLoading);
+   
+
+const resetu=()=>{
+console.log("datataadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+console.log(getValues())
+}
+      
+      
 
   return (
     <>
       <form
         onSubmit={handleSubmit( (data) => {
           console.log("Form data:", data);
+          reset();
           
         })}
       >
@@ -37,8 +52,13 @@ function App() {
         <button disabled={isSubmitting}>
           {isSubmitting ? "Sending..." : "Send"}
         </button>
-
-        {}
+        <input type="submit"disabled={submitCount>3} />
+       
+       Dirty Fields: {JSON.stringify(dirtyFields)}
+          <button type="submit" disabled={!dirtyFields.fname}>Submit</button>
+        <button onClick={()=>{trigger('fname')}}>reset</button>
+         
+          
       </form>
     </>
   );
